@@ -22,5 +22,30 @@ ioServer.on('connection', function(socket) {
 		socket.emit('message', data);
 
 	});
+
+	socket.on('cwach', function (msg) {
+
+		for(var index in data)
+		{
+			data[msg].status = false;
+		}
+
+		data[msg].status = true;
+		socket.emit('message', data);
+
+	});
+
+	socket.on('iCwach', function (msg) {
+
+		for(var index in data)
+		{
+			data[msg].status = false;
+		}
+
+		data[socket.id].status = true;
+		socket.emit('message', data);
+
+	});
+
 });
 
